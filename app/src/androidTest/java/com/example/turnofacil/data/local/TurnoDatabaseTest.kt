@@ -120,6 +120,17 @@ class TurnoDatabaseTest {
     }
 
     @Test(timeout = 1_000)
+    fun baja_logica_de_servicio_con_citas_conserva_la_cita() = runBlocking {
+        val servicioId = serviceDao.insert(nuevoServicio())
+        val citaId = appointmentDao.insert(nuevaCita(servicioId))
+
+        assertEquals(1, serviceDao.softDelete(servicioId, ahora))
+
+        assertFalse(serviceDao.getById(servicioId)!!.active)
+        assertNotNull(appointmentDao.getById(citaId))
+    }
+
+    @Test(timeout = 1_000)
     fun addonDao_inserta_actualiza_y_hace_baja_logica() = runBlocking {
         val id = addonDao.insert(AddonEntity(name = "Lavado", price = 30.0))
 
