@@ -6,10 +6,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
@@ -29,6 +34,9 @@ import com.example.turnofacil.ui.screens.DetalleCitaScreen
 import com.example.turnofacil.ui.screens.InicioScreen
 import com.example.turnofacil.ui.screens.ServiciosScreen
 import com.example.turnofacil.ui.theme.TurnoFacilTheme
+import com.example.turnofacil.ui.viewmodel.ServicioRepositorio
+import com.example.turnofacil.ui.viewmodel.ServicioRepositorioDemo
+import com.example.turnofacil.ui.viewmodel.ServiciosViewModel
 
 /**
  * Contenedor principal de la aplicación. Define el menú de navegación adaptable
@@ -41,6 +49,15 @@ fun TurnoFacilApp() {
     val navController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
     val destinoActual = backStackEntry?.destination
+
+    val servicioRepositorio: ServicioRepositorio = remember { ServicioRepositorioDemo() }
+    val serviciosViewModel: ServiciosViewModel = viewModel(
+        factory = viewModelFactory {
+            initializer {
+                ServiciosViewModel(servicioRepositorio)
+            }
+        }
+    )
 
     val navegarPrincipal: (Destino) -> Unit = { destino ->
         navController.navigate(destino.ruta) {
@@ -92,8 +109,9 @@ fun TurnoFacilApp() {
             }
 
             composable(Destino.Servicios.ruta) {
+                val serviciosUiState by serviciosViewModel.uiState.collectAsStateWithLifecycle()
                 ServiciosScreen(
-                    servicios = DatosDemo.servicios,
+                    uiState = serviciosUiState,
                     onAgendar = { navegarPrincipal(Destino.Agendar) },
                     onAdminServicios = { navController.navigate(Destino.AdminServicios.ruta) },
                 )

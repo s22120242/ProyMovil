@@ -39,6 +39,7 @@
     <string name="servicios_agendar">Agendar cita</string>
     <string name="servicios_admin">Administrar servicios</string>
     <string name="servicios_vacio">Aún no hay servicios registrados</string>
+    <string name="servicios_error_cargar">Error al cargar la lista de servicios</string>
     <string name="servicios_duracion">%1$d min</string>
     <string name="precio_formato">$%1$s</string>
 
