@@ -55,6 +55,9 @@
     <string name="agendar_adicionales">Servicios adicionales</string>
     <string name="agendar_hora">Hora</string>
     <string name="agendar_seleccionar_hora">Seleccionar hora</string>
+    <string name="agendar_horario_atencion">Horario de atención: %1$s a %2$s</string>
+    <string name="agendar_error_fuera_horario">La hora seleccionada está fuera del horario de atención</string>
+    <string name="agendar_error_horario_ocupado">El horario seleccionado ya no está disponible</string>
     <string name="agendar_total">Total a pagar:</string>
     <string name="agendar_confirmar">Confirmar cita</string>
 

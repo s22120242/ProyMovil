@@ -55,6 +55,9 @@
     <string name="agendar_adicionales">Additional services</string>
     <string name="agendar_hora">Time</string>
     <string name="agendar_seleccionar_hora">Select time</string>
+    <string name="agendar_horario_atencion">Business hours: %1$s to %2$s</string>
+    <string name="agendar_error_fuera_horario">Selected time is outside business hours</string>
+    <string name="agendar_error_horario_ocupado">Selected time slot is already taken</string>
     <string name="agendar_total">Total to pay:</string>
     <string name="agendar_confirmar">Confirm appointment</string>
 

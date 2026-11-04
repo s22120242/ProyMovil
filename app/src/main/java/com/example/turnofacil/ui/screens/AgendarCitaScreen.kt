@@ -212,6 +212,29 @@ fun AgendarCitaScreen(
                         hora = uiState.hora,
                         onHoraSeleccionada = onHoraChange,
                     )
+                    Text(
+                        text = stringResource(
+                            R.string.agendar_horario_atencion,
+                            uiState.horaApertura,
+                            uiState.horaCierre,
+                        ),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    if (uiState.errorHoraFueraHorario) {
+                        Text(
+                            text = stringResource(R.string.agendar_error_fuera_horario),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.error,
+                        )
+                    }
+                    if (uiState.errorHorarioOcupado) {
+                        Text(
+                            text = stringResource(R.string.agendar_error_horario_ocupado),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.error,
+                        )
+                    }
 
                     // Total en vivo
                     Row(
