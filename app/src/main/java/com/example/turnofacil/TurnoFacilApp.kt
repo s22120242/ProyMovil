@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.painterResource
@@ -34,6 +35,9 @@ import com.example.turnofacil.ui.screens.DetalleCitaScreen
 import com.example.turnofacil.ui.screens.InicioScreen
 import com.example.turnofacil.ui.screens.ServiciosScreen
 import com.example.turnofacil.ui.theme.TurnoFacilTheme
+import com.example.turnofacil.ui.viewmodel.AgendarCitaViewModel
+import com.example.turnofacil.ui.viewmodel.CitaRepositorio
+import com.example.turnofacil.ui.viewmodel.CitaRepositorioDemo
 import com.example.turnofacil.ui.viewmodel.ServicioRepositorio
 import com.example.turnofacil.ui.viewmodel.ServicioRepositorioDemo
 import com.example.turnofacil.ui.viewmodel.ServiciosViewModel
@@ -51,10 +55,20 @@ fun TurnoFacilApp() {
     val destinoActual = backStackEntry?.destination
 
     val servicioRepositorio: ServicioRepositorio = remember { ServicioRepositorioDemo() }
+    val citaRepositorio: CitaRepositorio = remember { CitaRepositorioDemo() }
+
     val serviciosViewModel: ServiciosViewModel = viewModel(
         factory = viewModelFactory {
             initializer {
                 ServiciosViewModel(servicioRepositorio)
+            }
+        }
+    )
+
+    val agendarCitaViewModel: AgendarCitaViewModel = viewModel(
+        factory = viewModelFactory {
+            initializer {
+                AgendarCitaViewModel(servicioRepositorio, citaRepositorio)
             }
         }
     )
@@ -118,9 +132,20 @@ fun TurnoFacilApp() {
             }
 
             composable(Destino.Agendar.ruta) {
+                val agendarUiState by agendarCitaViewModel.uiState.collectAsStateWithLifecycle()
+                LaunchedEffect(agendarUiState.guardadoExitoso) {
+                    if (agendarUiState.guardadoExitoso) {
+                        navegarPrincipal(Destino.Agenda)
+                    }
+                }
                 AgendarCitaScreen(
-                    servicios = DatosDemo.servicios,
-                    onConfirmar = { navegarPrincipal(Destino.Agenda) },
+                    uiState = agendarUiState,
+                    onNombreChange = agendarCitaViewModel::onNombreChange,
+                    onServicioChange = agendarCitaViewModel::onServicioChange,
+                    onTipoAtencionChange = agendarCitaViewModel::onTipoAtencionChange,
+                    onAdicionalToggle = agendarCitaViewModel::onAdicionalToggle,
+                    onHoraChange = agendarCitaViewModel::onHoraChange,
+                    onConfirmar = agendarCitaViewModel::enviar,
                 )
             }
 

@@ -48,12 +48,14 @@
     <string name="agendar_servicio">Servicio</string>
     <string name="agendar_seleccionar_servicio">Seleccionar servicio</string>
     <string name="agendar_nombre">Nombre del cliente</string>
+    <string name="agendar_error_nombre">Por favor ingresa el nombre del cliente</string>
     <string name="agendar_tipo_atencion">Tipo de atención</string>
     <string name="agendar_tipo_local">En el local</string>
     <string name="agendar_tipo_domicilio">A domicilio</string>
     <string name="agendar_adicionales">Servicios adicionales</string>
     <string name="agendar_hora">Hora</string>
     <string name="agendar_seleccionar_hora">Seleccionar hora</string>
+    <string name="agendar_total">Total a pagar:</string>
     <string name="agendar_confirmar">Confirmar cita</string>
 
     <!-- Agenda del día -->

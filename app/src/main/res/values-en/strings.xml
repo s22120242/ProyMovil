@@ -48,12 +48,14 @@
     <string name="agendar_servicio">Service</string>
     <string name="agendar_seleccionar_servicio">Select service</string>
     <string name="agendar_nombre">Customer name</string>
+    <string name="agendar_error_nombre">Please enter customer name</string>
     <string name="agendar_tipo_atencion">Attention type</string>
     <string name="agendar_tipo_local">In store</string>
     <string name="agendar_tipo_domicilio">At home</string>
     <string name="agendar_adicionales">Additional services</string>
     <string name="agendar_hora">Time</string>
     <string name="agendar_seleccionar_hora">Select time</string>
+    <string name="agendar_total">Total to pay:</string>
     <string name="agendar_confirmar">Confirm appointment</string>
 
     <!-- Daily schedule -->
