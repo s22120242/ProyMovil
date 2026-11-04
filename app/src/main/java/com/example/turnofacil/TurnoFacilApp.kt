@@ -65,16 +65,9 @@ fun TurnoFacilApp() {
         }
     )
 
-    val agendarCitaViewModel: AgendarCitaViewModel = viewModel(
-        factory = viewModelFactory {
-            initializer {
-                AgendarCitaViewModel(servicioRepositorio, citaRepositorio)
-            }
-        }
-    )
-
     val navegarPrincipal: (Destino) -> Unit = { destino ->
-        navController.navigate(destino.ruta) {
+        val ruta = if (destino is Destino.Agendar) Destino.Agendar.crearRuta() else destino.ruta
+        navController.navigate(ruta) {
             popUpTo(navController.graph.findStartDestination().id) { saveState = true }
             launchSingleTop = true
             restoreState = true
@@ -126,12 +119,36 @@ fun TurnoFacilApp() {
                 val serviciosUiState by serviciosViewModel.uiState.collectAsStateWithLifecycle()
                 ServiciosScreen(
                     uiState = serviciosUiState,
-                    onAgendar = { navegarPrincipal(Destino.Agendar) },
+                    onAgendar = { servicioId ->
+                        navController.navigate(Destino.Agendar.crearRuta(servicioId))
+                    },
                     onAdminServicios = { navController.navigate(Destino.AdminServicios.ruta) },
                 )
             }
 
-            composable(Destino.Agendar.ruta) {
+            composable(
+                route = Destino.Agendar.ruta,
+                arguments = listOf(
+                    navArgument(Destino.Agendar.ARG_SERVICIO_ID) {
+                        type = NavType.StringType
+                        nullable = true
+                        defaultValue = null
+                    }
+                ),
+            ) { entry ->
+                val servicioId = entry.arguments?.getString(Destino.Agendar.ARG_SERVICIO_ID)
+                val agendarCitaViewModel: AgendarCitaViewModel = viewModel(
+                    key = "AgendarCitaViewModel_$servicioId",
+                    factory = viewModelFactory {
+                        initializer {
+                            AgendarCitaViewModel(
+                                servicioRepositorio = servicioRepositorio,
+                                citaRepositorio = citaRepositorio,
+                                servicioIdInicial = servicioId,
+                            )
+                        }
+                    }
+                )
                 val agendarUiState by agendarCitaViewModel.uiState.collectAsStateWithLifecycle()
                 LaunchedEffect(agendarUiState.guardadoExitoso) {
                     if (agendarUiState.guardadoExitoso) {
@@ -169,7 +186,7 @@ fun TurnoFacilApp() {
                     cita = citaId?.let { DatosDemo.citaPorId(it) },
                     onVolver = { navController.popBackStack() },
                     onConfirmar = { navController.popBackStack() },
-                    onReprogramar = { navController.navigate(Destino.Agendar.ruta) },
+                    onReprogramar = { navController.navigate(Destino.Agendar.crearRuta()) },
                     onCancelar = { navController.popBackStack() },
                 )
             }

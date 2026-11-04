@@ -1,5 +1,6 @@
 package com.example.turnofacil.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,7 +38,7 @@ import com.example.turnofacil.ui.viewmodel.ServiciosUiState
 @Composable
 fun ServiciosScreen(
     uiState: ServiciosUiState,
-    onAgendar: () -> Unit,
+    onAgendar: (String?) -> Unit,
     onAdminServicios: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -73,7 +74,7 @@ fun ServiciosScreen(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
-                    Button(onClick = onAgendar, modifier = Modifier.weight(1f)) {
+                    Button(onClick = { onAgendar(null) }, modifier = Modifier.weight(1f)) {
                         Text(stringResource(R.string.servicios_agendar))
                     }
                     OutlinedButton(onClick = onAdminServicios, modifier = Modifier.weight(1f)) {
@@ -117,7 +118,11 @@ fun ServiciosScreen(
                             horizontalArrangement = Arrangement.spacedBy(12.dp),
                         ) {
                             items(uiState.servicios, key = { it.id }) { servicio ->
-                                Card(modifier = Modifier.fillMaxWidth()) {
+                                Card(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable { onAgendar(servicio.id) },
+                                ) {
                                     ListItem(
                                         headlineContent = {
                                             Text(
