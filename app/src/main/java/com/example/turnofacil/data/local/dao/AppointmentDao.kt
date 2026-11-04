@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import com.example.turnofacil.data.local.entity.AppointmentAddonCrossRef
 import com.example.turnofacil.data.local.entity.AppointmentEntity
 import com.example.turnofacil.data.local.relation.AppointmentWithDetails
 import com.example.turnofacil.domain.model.EstadoCita
@@ -25,6 +26,14 @@ interface AppointmentDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(appointment: AppointmentEntity): Long
+
+    /** Asocia un adicional a una cita (tabla cruzada N-M). */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAddonCrossRef(crossRef: AppointmentAddonCrossRef)
+
+    /** Asocia varios adicionales a una cita en una sola operación. */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAddonCrossRefs(crossRefs: List<AppointmentAddonCrossRef>)
 
     @Query(
         """
