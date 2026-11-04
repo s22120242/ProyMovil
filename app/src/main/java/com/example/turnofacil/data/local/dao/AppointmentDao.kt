@@ -4,7 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.turnofacil.data.local.entity.AppointmentEntity
+import com.example.turnofacil.data.local.relation.AppointmentWithDetails
 import com.example.turnofacil.domain.model.EstadoCita
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
@@ -71,6 +73,16 @@ interface AppointmentDao {
     /** Agenda del día, ordenada por hora (CU3). */
     @Query("SELECT * FROM appointment WHERE date = :date ORDER BY time")
     fun observeByDate(date: LocalDate): Flow<List<AppointmentEntity>>
+
+    /** Detalle de una cita con servicio y adicionales. */
+    @Transaction
+    @Query("SELECT * FROM appointment WHERE id = :id")
+    suspend fun getWithDetailsById(id: Long): AppointmentWithDetails?
+
+    /** Agenda del día con servicio y adicionales resueltos. */
+    @Transaction
+    @Query("SELECT * FROM appointment WHERE date = :date ORDER BY time")
+    fun observeWithDetailsByDate(date: LocalDate): Flow<List<AppointmentWithDetails>>
 
     /**
      * ¿Ya hay una cita Pendiente o Confirmada en esa fecha y hora?
