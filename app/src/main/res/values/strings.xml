@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">TurnoFácil</string>
+
+    <!-- Navegación -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_servicios">Servicios</string>
+    <string name="nav_agendar">Agendar</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="nav_configuracion">Configuración</string>
+
+    <!-- Acciones comunes -->
+    <string name="accion_volver">Volver</string>
+    <string name="accion_guardar">Guardar</string>
+    <string name="accion_cancelar">Cancelar</string>
+    <string name="accion_aceptar">Aceptar</string>
+    <string name="accion_agregar">Agregar</string>
+    <string name="accion_editar">Editar</string>
+    <string name="accion_eliminar">Eliminar</string>
+    <string name="accion_confirmar">Confirmar</string>
+
+    <!-- Inicio -->
+    <string name="inicio_titulo">Inicio</string>
+    <string name="inicio_bienvenida">Bienvenido a TurnoFácil</string>
+    <string name="inicio_resumen_dia">Resumen del día</string>
+    <string name="inicio_citas_hoy">Citas de hoy</string>
+    <string name="inicio_servicios_activos">Servicios activos</string>
+    <string name="inicio_acciones_rapidas">Acciones rápidas</string>
+    <string name="inicio_ver_agenda">Ver agenda del día</string>
+    <string name="inicio_agendar_cita">Agendar nueva cita</string>
+    <string name="inicio_admin_servicios">Administrar servicios</string>
+    <string name="inicio_estado_sincronizacion">Estado de sincronización</string>
+    <string name="inicio_conectado">Con conexión</string>
+    <string name="inicio_sin_conexion">Sin conexión — los cambios se guardan en el dispositivo</string>
+    <string name="inicio_sync_pendiente">Cambios pendientes por sincronizar</string>
+
+    <!-- Servicios -->
+    <string name="servicios_titulo">Servicios</string>
+    <string name="servicios_subtitulo">Elige un servicio y consulta su precio</string>
+    <string name="servicios_agendar">Agendar cita</string>
+    <string name="servicios_admin">Administrar servicios</string>
+    <string name="servicios_vacio">Aún no hay servicios registrados</string>
+    <string name="servicios_duracion">%1$d min</string>
+    <string name="precio_formato">$%1$s</string>
+
+    <!-- Agendar cita -->
+    <string name="agendar_titulo">Agendar cita</string>
+    <string name="agendar_servicio">Servicio</string>
+    <string name="agendar_seleccionar_servicio">Seleccionar servicio</string>
+    <string name="agendar_nombre">Nombre del cliente</string>
+    <string name="agendar_tipo_atencion">Tipo de atención</string>
+    <string name="agendar_tipo_local">En el local</string>
+    <string name="agendar_tipo_domicilio">A domicilio</string>
+    <string name="agendar_adicionales">Servicios adicionales</string>
+    <string name="agendar_hora">Hora</string>
+    <string name="agendar_seleccionar_hora">Seleccionar hora</string>
+    <string name="agendar_confirmar">Confirmar cita</string>
+
+    <!-- Agenda del día -->
+    <string name="agenda_titulo">Agenda del día</string>
+    <string name="agenda_subtitulo">Turnos programados para hoy</string>
+    <string name="agenda_vacia">No hay citas agendadas para hoy</string>
+    <string name="agenda_ver_detalle">Ver detalle</string>
+
+    <!-- Estados de la cita -->
+    <string name="estado_pendiente">Pendiente</string>
+    <string name="estado_confirmada">Confirmada</string>
+    <string name="estado_cancelada">Cancelada</string>
+
+    <!-- Detalle de cita -->
+    <string name="detalle_titulo">Detalle de la cita</string>
+    <string name="detalle_cliente">Cliente</string>
+    <string name="detalle_servicio">Servicio</string>
+    <string name="detalle_tipo_atencion">Tipo de atención</string>
+    <string name="detalle_adicionales">Adicionales</string>
+    <string name="detalle_hora">Hora</string>
+    <string name="detalle_estado">Estado</string>
+    <string name="detalle_nota">Nota</string>
+    <string name="detalle_reprogramar">Reprogramar</string>
+    <string name="detalle_no_encontrada">No se encontró la cita</string>
+
+    <!-- Administración de servicios -->
+    <string name="admin_titulo">Administración de servicios</string>
+    <string name="admin_subtitulo">Alta, edición y baja de servicios</string>
+    <string name="admin_nuevo_servicio">Nuevo servicio</string>
+    <string name="admin_editar_servicio">Editar servicio</string>
+    <string name="admin_nombre">Nombre</string>
+    <string name="admin_precio">Precio</string>
+    <string name="admin_duracion">Duración (min)</string>
+    <string name="admin_disponible">Disponible</string>
+
+    <!-- Configuración -->
+    <string name="config_titulo">Configuración</string>
+    <string name="config_idioma">Idioma</string>
+    <string name="config_idioma_sistema">Idioma del sistema</string>
+    <string name="config_idioma_es">Español</string>
+    <string name="config_idioma_en">Inglés</string>
+    <string name="config_horario">Horario de atención</string>
+    <string name="config_horario_apertura">Apertura</string>
+    <string name="config_horario_cierre">Cierre</string>
+    <string name="config_sincronizacion">Sincronización</string>
+    <string name="config_sync_activada">Sincronización automática</string>
+    <string name="config_sync_descripcion">Respalda las citas en la nube cuando haya conexión</string>
+    <string name="config_ultima_sincronizacion">Última sincronización: hoy, 9:30 a. m.</string>
+</resources>
