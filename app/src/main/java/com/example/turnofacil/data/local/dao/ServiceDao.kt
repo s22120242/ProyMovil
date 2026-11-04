@@ -26,6 +26,12 @@ interface ServiceDao {
     @Query("SELECT * FROM service WHERE id = :id")
     suspend fun getById(id: Long): ServiceEntity?
 
+    @Query("SELECT * FROM service WHERE remote_id = :remoteId LIMIT 1")
+    suspend fun getByRemoteId(remoteId: String): ServiceEntity?
+
+    @Query("SELECT COUNT(*) FROM service")
+    suspend fun count(): Int
+
     /** Catálogo visible para agendar: solo servicios activos. */
     @Query("SELECT * FROM service WHERE active = 1 ORDER BY name")
     fun observeActive(): Flow<List<ServiceEntity>>

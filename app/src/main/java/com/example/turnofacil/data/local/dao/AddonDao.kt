@@ -25,6 +25,9 @@ interface AddonDao {
     @Query("SELECT * FROM addon WHERE id = :id")
     suspend fun getById(id: Long): AddonEntity?
 
+    @Query("SELECT * FROM addon WHERE name = :name AND active = 1 LIMIT 1")
+    suspend fun getByName(name: String): AddonEntity?
+
     /** Adicionales disponibles para elegir en una cita. */
     @Query("SELECT * FROM addon WHERE active = 1 ORDER BY name")
     fun observeActive(): Flow<List<AddonEntity>>

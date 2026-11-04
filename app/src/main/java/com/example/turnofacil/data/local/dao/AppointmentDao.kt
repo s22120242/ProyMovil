@@ -88,6 +88,10 @@ interface AppointmentDao {
     @Query("SELECT * FROM appointment WHERE id = :id")
     suspend fun getWithDetailsById(id: Long): AppointmentWithDetails?
 
+    @Transaction
+    @Query("SELECT * FROM appointment WHERE id = :id")
+    fun observeWithDetailsById(id: Long): Flow<AppointmentWithDetails?>
+
     /** Agenda del día con servicio y adicionales resueltos. */
     @Transaction
     @Query("SELECT * FROM appointment WHERE date = :date ORDER BY time")
