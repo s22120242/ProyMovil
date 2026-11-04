@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">TurnoFácil</string>
+
+    <!-- Navigation -->
+    <string name="nav_inicio">Home</string>
+    <string name="nav_servicios">Services</string>
+    <string name="nav_agendar">Book</string>
+    <string name="nav_agenda">Schedule</string>
+    <string name="nav_configuracion">Settings</string>
+
+    <!-- Common actions -->
+    <string name="accion_volver">Back</string>
+    <string name="accion_guardar">Save</string>
+    <string name="accion_cancelar">Cancel</string>
+    <string name="accion_aceptar">OK</string>
+    <string name="accion_agregar">Add</string>
+    <string name="accion_editar">Edit</string>
+    <string name="accion_eliminar">Delete</string>
+    <string name="accion_confirmar">Confirm</string>
+
+    <!-- Home -->
+    <string name="inicio_titulo">Home</string>
+    <string name="inicio_bienvenida">Welcome to TurnoFácil</string>
+    <string name="inicio_resumen_dia">Today\'s summary</string>
+    <string name="inicio_citas_hoy">Appointments today</string>
+    <string name="inicio_servicios_activos">Active services</string>
+    <string name="inicio_acciones_rapidas">Quick actions</string>
+    <string name="inicio_ver_agenda">View today\'s schedule</string>
+    <string name="inicio_agendar_cita">Book a new appointment</string>
+    <string name="inicio_admin_servicios">Manage services</string>
+    <string name="inicio_estado_sincronizacion">Sync status</string>
+    <string name="inicio_conectado">Online</string>
+    <string name="inicio_sin_conexion">Offline — changes are saved on the device</string>
+    <string name="inicio_sync_pendiente">Changes pending sync</string>
+
+    <!-- Services -->
+    <string name="servicios_titulo">Services</string>
+    <string name="servicios_subtitulo">Choose a service and check its price</string>
+    <string name="servicios_agendar">Book appointment</string>
+    <string name="servicios_admin">Manage services</string>
+    <string name="servicios_vacio">No services registered yet</string>
+    <string name="servicios_duracion">%1$d min</string>
+    <string name="precio_formato">$%1$s</string>
+
+    <!-- Book appointment -->
+    <string name="agendar_titulo">Book appointment</string>
+    <string name="agendar_servicio">Service</string>
+    <string name="agendar_seleccionar_servicio">Select service</string>
+    <string name="agendar_nombre">Customer name</string>
+    <string name="agendar_tipo_atencion">Attention type</string>
+    <string name="agendar_tipo_local">In store</string>
+    <string name="agendar_tipo_domicilio">At home</string>
+    <string name="agendar_adicionales">Additional services</string>
+    <string name="agendar_hora">Time</string>
+    <string name="agendar_seleccionar_hora">Select time</string>
+    <string name="agendar_confirmar">Confirm appointment</string>
+
+    <!-- Daily schedule -->
+    <string name="agenda_titulo">Daily schedule</string>
+    <string name="agenda_subtitulo">Shifts booked for today</string>
+    <string name="agenda_vacia">There are no appointments for today</string>
+    <string name="agenda_ver_detalle">View detail</string>
+
+    <!-- Appointment status -->
+    <string name="estado_pendiente">Pending</string>
+    <string name="estado_confirmada">Confirmed</string>
+    <string name="estado_cancelada">Cancelled</string>
+
+    <!-- Appointment detail -->
+    <string name="detalle_titulo">Appointment detail</string>
+    <string name="detalle_cliente">Customer</string>
+    <string name="detalle_servicio">Service</string>
+    <string name="detalle_tipo_atencion">Attention type</string>
+    <string name="detalle_adicionales">Add-ons</string>
+    <string name="detalle_hora">Time</string>
+    <string name="detalle_estado">Status</string>
+    <string name="detalle_nota">Note</string>
+    <string name="detalle_reprogramar">Reschedule</string>
+    <string name="detalle_no_encontrada">Appointment not found</string>
+
+    <!-- Service management -->
+    <string name="admin_titulo">Service management</string>
+    <string name="admin_subtitulo">Create, edit and delete services</string>
+    <string name="admin_nuevo_servicio">New service</string>
+    <string name="admin_editar_servicio">Edit service</string>
+    <string name="admin_nombre">Name</string>
+    <string name="admin_precio">Price</string>
+    <string name="admin_duracion">Duration (min)</string>
+    <string name="admin_disponible">Available</string>
+
+    <!-- Settings -->
+    <string name="config_titulo">Settings</string>
+    <string name="config_idioma">Language</string>
+    <string name="config_idioma_sistema">System language</string>
+    <string name="config_idioma_es">Spanish</string>
+    <string name="config_idioma_en">English</string>
+    <string name="config_horario">Business hours</string>
+    <string name="config_horario_apertura">Opening</string>
+    <string name="config_horario_cierre">Closing</string>
+    <string name="config_sincronizacion">Sync</string>
+    <string name="config_sync_activada">Automatic sync</string>
+    <string name="config_sync_descripcion">Back up appointments to the cloud when online</string>
+    <string name="config_ultima_sincronizacion">Last sync: today, 9:30 AM</string>
+</resources>
