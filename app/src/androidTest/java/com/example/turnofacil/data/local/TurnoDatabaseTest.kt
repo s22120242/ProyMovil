@@ -90,7 +90,35 @@ class TurnoDatabaseTest {
             mediaDao.observeByOwner(TipoPropietarioMedia.CITA, 0L).first()
             mediaDao.getById(0L)
             mediaDao.deleteById(0L)
+
+            // Inserts/relaciones que no se pueden precalentar con ids inexistentes:
+            // se crean datos temporales y luego se limpia la base.
+            val warmServiceId = serviceDao.insert(
+                ServiceEntity(name = "warmup", price = 1.0, durationMin = 1),
+            )
+            val warmAddonId = addonDao.insert(AddonEntity(name = "warmup", price = 1.0))
+            val warmCitaId = appointmentDao.insert(
+                AppointmentEntity(
+                    serviceId = warmServiceId,
+                    customerName = "warmup",
+                    attentionType = TipoAtencion.LOCAL,
+                    date = fecha,
+                    time = LocalTime.parse("00:01"),
+                    totalPrice = 1.0,
+                ),
+            )
+            appointmentDao.insertAddonCrossRefs(
+                listOf(
+                    AppointmentAddonCrossRef(
+                        appointmentId = warmCitaId,
+                        addonId = warmAddonId,
+                    ),
+                ),
+            )
+            appointmentDao.getWithDetailsById(warmCitaId)
+            appointmentDao.observeWithDetailsByDate(fecha).first()
         }
+        db.clearAllTables()
     }
 
     @After
